@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EarEase Tech Enrollment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fff8e1, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    form {
+      background-color: white;
+      border: 1px solid #f0c14b;
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      margin-top: 50px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    form:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #b8860b;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #fffdf5;
+    }
+
+    input:focus, select:focus {
+      border-color: #f0b400;
+      box-shadow: 0 0 8px rgba(240, 180, 0, 0.2);
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background-color: #f0b400;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #d99e00;
+      transform: scale(1.02);
+    }
+
+    .thank-you-message {
+      display: none;
+      margin-top: 60px;
+      max-width: 500px;
+      background-color: #fff8dc;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: #5a4300;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      font-size: 1.1rem;
+    }
+
+    .thank-you-message h3 {
+      margin-top: 0;
+      color: #b8860b;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form id="enrollmentForm">
+    <h2>📚 Enroll at EarEase-Tech</h2>
+
+    <label for="name">Full Name:</label>
+    <input type="text" placeholder="Enter your full name" required>
+
+    <label for="email">Email Address:</label>
+    <input type="email" placeholder="Enter your email address" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" placeholder="Enter your phone number" required>
+
+    <label for="course">Select Course:</label>
+    <select required>
+      <option value="">-- Choose a Course --</option>
+      <option value="MERN Stack Development">MERN Stack Development</option>
+      <option value="Data Science Mastery">Data Science Mastery</option>
+      <option value="Data Analytics with BI Tools">Data Analytics with BI Tools</option>
+      <option value="VLSI & Embedded Systems">VLSI & Embedded Systems</option>
+      <option value="HR Analytics with BI Tools">HR Analytics with BI Tools</option>
+      <option value="Business Analytics with BI Tools">Business Analytics with BI Tools</option>
+      <option value="HR Recruiter">HR Recruiter</option>
+      <option value="Project Management">Project Management</option>
+      <option value="Sales & Marketing">Sales & Marketing</option>
+    </select>
+
+    <label for="tier">Select Training Tier:</label>
+    <select required>
+      <option value="">-- Choose a Tier --</option>
+      <option value="Tier 1 - Foundation (45 Days)">Tier 1 - Foundation (45 Days)</option>
+      <option value="Tier 2 - Professional (3 Months)">Tier 2 - Professional (3 Months)</option>
+      <option value="Tier 3 - Industry-Ready (6 Months)">Tier 3 - Industry-Ready (6 Months)</option>
+    </select>
+
+    <input type="submit" value="🎓 Enroll Now">
+  </form>
+
+  <div class="thank-you-message" id="thankYouMessage">
+    <h3>🎉 Thank You for Enrolling!</h3>
+    <p>We’ve received your interest in joining <strong>EarEase-Tech</strong>.</p>
+    <p>Our team will contact you shortly with further instructions and details. Get ready to elevate your tech journey 🚀</p>
+    <p>Stay connected. Stay inspired. 🌟</p>
+  </div>
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-yellow-300 to-yellow-500 text-white py-20">
+    <div class="max-w-5xl mx-auto text-center px-4">
+      <a href="index.html" class="mt-6 inline-block bg-white text-[#D4A017] font-semibold px-6 py-2 rounded-lg shadow hover:bg-gray-100">Enroll Now</a>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("enrollmentForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // stop actual submission
+      this.style.display = "none"; // hide form
+      document.getElementById("thankYouMessage").style.display = "block"; // show thank you
+    });
+  </script>
+
+</body>
+</html>
