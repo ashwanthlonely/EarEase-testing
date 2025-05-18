@@ -6,10 +6,6 @@
   <title>EarEase Internships</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-    
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EarEase Tech Enrollment</title>
   <style>
     * {
       box-sizing: border-box;
@@ -21,7 +17,6 @@
       margin: 0;
       padding: 0;
     }
- */
 
     header img {
       height: 40px;
@@ -115,6 +110,28 @@
       color: #b8860b;
     }
 
+    .download-button {
+      display: none;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .download-button button {
+      background-color: #f0b400;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s ease-in-out;
+    }
+
+    .download-button button:hover {
+      background-color: #d99e00;
+      transform: scale(1.02);
+    }
+
     .cta-section {
       background: linear-gradient(to right, #facc15, #f59e0b);
       color: white;
@@ -154,7 +171,6 @@
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
@@ -171,21 +187,20 @@
   </header>
 
   <main>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdFoVbxEB0TKepUPR3PnOAI6-_vAIsUNRawIfF4Fyg-jZYf1g/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-
+    <form id="enrollmentForm">
       <h2>📚 Enroll at EarEase-Tech</h2>
 
       <label for="name">Full Name:</label>
-      <input name="entry.123456789" type="text" placeholder="Enter your full name" required>
+      <input type="text" name="name" placeholder="Enter your full name" required>
 
       <label for="email">Email Address:</label>
-      <input name="entry.987654321" type="email" placeholder="Enter your email address" required>
+      <input type="email" name="email" placeholder="Enter your email address" required>
 
       <label for="phone">Phone Number:</label>
-      <input name="entry.192837465" type="tel" placeholder="Enter your phone number" required>
+      <input type="tel" name="phone" placeholder="Enter your phone number" required>
 
       <label for="course">Select Course:</label>
-      <select name="entry.564738291" required>
+      <select name="course" required>
         <option value="">-- Choose a Course --</option>
         <option value="MERN Stack Development">MERN Stack Development</option>
         <option value="Data Science Mastery">Data Science Mastery</option>
@@ -199,7 +214,7 @@
       </select>
 
       <label for="tier">Select Training Tier:</label>
-      <select name="entry.102938475" required>
+      <select name="tier" required>
         <option value="">-- Choose a Tier --</option>
         <option value="Tier 1 - Foundation (45 Days)">Tier 1 - Foundation (45 Days)</option>
         <option value="Tier 2 - Professional (3 Months)">Tier 2 - Professional (3 Months)</option>
@@ -208,26 +223,84 @@
 
       <input type="submit" value="🎓 Enroll Now">
     </form>
-    <!-- Invisible iframe to handle redirect
-    <iframe name="hidden_iframe" style="display:none;" onload="if(submitted) showThankYou();"></iframe> -->
-
   </main>
 
   <div class="thank-you-message" id="thankYouMessage">
     <h3>🎉 Thank You for Enrolling!</h3>
     <p>We’ve received your interest in joining <strong>EarEase-Tech</strong>.</p>
     <p>Our team will contact you shortly with further instructions and details. Get ready to elevate your tech journey 🚀</p>
-    <p>Stay connected. Stay inspired. 🌟</p>
+    <p>Download the enrollment data as a CSV file below and email it to <a href="mailto:recipient@example.com">recipient@example.com</a> daily if new entries are added.</p>
+    <p>Alternatively, use a service like <a href="https://formspree.io/" target="_blank">Formspree</a> to automate email notifications.</p>
+    <div class="download-button" id="downloadButton">
+      <button onclick="downloadCSV()">Download CSV</button>
+    </div>
   </div>
 
-
   <script>
+    // Load existing submissions from localStorage
+    let submissions = JSON.parse(localStorage.getItem('enrollments')) || [];
+
     document.getElementById("enrollmentForm").addEventListener("submit", function(event) {
       event.preventDefault();
+
+      // Collect form data
+      const formData = {
+        timestamp: new Date().toISOString(),
+        name: this.querySelector('input[name="name"]').value,
+        email: this.querySelector('input[name="email"]').value,
+        phone: this.querySelector('input[name="phone"]').value,
+        course: this.querySelector('select[name="course"]').value,
+        tier: this.querySelector('select[name="tier"]').value
+      };
+
+      // Add to submissions array
+      submissions.push(formData);
+
+      // Save to localStorage
+      localStorage.setItem('enrollments', JSON.stringify(submissions));
+
+      // Hide form and show thank-you message with download button
       this.style.display = "none";
       document.getElementById("thankYouMessage").style.display = "block";
+      document.getElementById("downloadButton").style.display = "block";
     });
-  </script>
 
+    // Function to generate and download CSV
+    function downloadCSV() {
+      if (submissions.length === 0) {
+        alert('No submissions to download.');
+        return;
+      }
+
+      // CSV header
+      const headers = ['Timestamp', 'Full Name', 'Email', 'Phone', 'Course', 'Tier'];
+      const csvRows = [headers.join(',')];
+
+      // Add submission rows
+      submissions.forEach(sub => {
+        const values = [
+          `"${sub.timestamp}"`,
+          `"${sub.name.replace(/"/g, '""')}"`, // Escape quotes
+          `"${sub.email.replace(/"/g, '""')}"`,
+          `"${sub.phone.replace(/"/g, '""')}"`,
+          `"${sub.course.replace(/"/g, '""')}"`,
+          `"${sub.tier.replace(/"/g, '""')}"`
+        ];
+        csvRows.push(values.join(','));
+      });
+
+      // Create CSV content
+      const csvContent = csvRows.join('\n');
+
+      // Create downloadable file
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `enrollments-${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+  </script>
 </body>
 </html>

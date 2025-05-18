@@ -6,63 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EarEase-Tech</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .yellow-bg { background: linear-gradient(135deg, #FFC107, #FFCA28); }
-    .black-text { color: #000000; }
-    .gray-accent { color: #D3D3D3; }
-    .custom-transition { transition: all 0.3s ease; }
-    .custom-transition:hover { transform: scale(1.05); }
-  </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
 
   <!-- Header -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <!-- Logo and Brand -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <img src="assets/logo.png" alt="EarEase-Tech Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain" />
-        <h1 class="text-base md:text-xl font-bold">EarEase<span class="text-[#D4A017]">-Tech</span></h1>
+        <img src="assets/logo.png" alt="EarEase-Tech Logo" class="w-10 h-10 object-contain" />
+        <h1 class="text-2xl font-bold">EarEase<span class="text-[#D4A017]">-Tech</span></h1>
       </div>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex space-x-6">
-        <a href="#about" class="hover:text-[#D4A017]">About</a>
-        <a href="#services" class="hover:text-[#D4A017]">Services</a>
-        <a href="#booking" class="hover:text-[#D4A017]">Book a Session</a>
-        <a href="#contact" class="hover:text-[#D4A017]">Contact</a>
-        <a href="internships.html" class="hover:text-[#D4A017]">Internships</a>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#about" class="hover:text-[#D4A017]">About</a></li>
+          <li><a href="#services" class="hover:text-[#D4A017]">Services</a></li>
+          <li><a href="#booking" class="hover:text-[#D4A017]">Book a Session</a></li>
+          <li><a href="#contact" class="hover:text-[#D4A017]">Contact</a></li>
+        </ul>
       </nav>
-
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <button id="menu-toggle" class="text-[#D4A017] focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
-      <a href="#about" class="block text-gray-700 hover:text-[#D4A017]">About</a>
-      <a href="#services" class="block text-gray-700 hover:text-[#D4A017]">Services</a>
-      <a href="#booking" class="block text-gray-700 hover:text-[#D4A017]">Book a Session</a>
-      <a href="#contact" class="block text-gray-700 hover:text-[#D4A017]">Contact</a>
-      <a href="internships.html" class="block text-gray-700 hover:text-[#D4A017]">Internships</a>
     </div>
   </header>
-
-  <script>
-    // Toggle Mobile Menu
-    document.getElementById('menu-toggle').addEventListener('click', function () {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    });
-  </script>
-
 
   <!-- Hero Section -->
   <section class="bg-gradient-to-r from-yellow-300 to-yellow-500 text-white py-20">
@@ -86,50 +49,43 @@ To support our mission of empowering careers and wellness, <strong>EarEase-Nexus
   </section>
 
   <!-- Services Section -->
-  <!-- Services Section -->
   <section id="services" class="py-16">
     <div class="max-w-6xl mx-auto px-4">
       <h3 class="text-2xl font-bold text-center mb-10">Our Services</h3>
       <div class="grid md:grid-cols-3 gap-8">
 
-        <!-- IT Services -->
-        <div class="bg-white p-6 rounded shadow custom-transition text-center">
-          <img src="assets/itservices.png" alt="IT Services" class="w-32 h-32 mx-auto rounded-xl mb-4 object-cover" />
+        <!-- Service 1 -->
+        <div class="bg-white p-6 rounded shadow">
           <h4 class="text-xl font-semibold mb-2">IT Services</h4>
           <p>Custom development, automation, analytics, and AI integration services tailored for startups and businesses.</p>
         </div>
 
-        <!-- IT Drop Servicing -->
-        <div class="bg-white p-6 rounded shadow custom-transition text-center">
-          <img src="assets/dropservicing.png" alt="IT Drop Servicing" class="w-32 h-32 mx-auto rounded-xl mb-4 object-cover" />
+        <!-- Service 2 -->
+        <div class="bg-white p-6 rounded shadow">
           <h4 class="text-xl font-semibold mb-2">IT Drop Servicing</h4>
           <p>Get your projects done by trained professionals and fresh talents guided by senior engineers.</p>
         </div>
 
-        <!-- Mental Wellness Activities -->
-        <div class="bg-white p-6 rounded shadow custom-transition text-center">
-          <img src="assets/wellness.png" alt="Mental Wellness" class="w-32 h-32 mx-auto rounded-xl mb-4 object-cover" />
+        <!-- Service 3 -->
+        <div class="bg-white p-6 rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Mental Wellness Activities</h4>
           <p>We offer weekend trips, creative breaks, and a low-stress work model for better mental health.</p>
         </div>
 
-        <!-- Listening Sessions -->
-        <div class="bg-white p-6 rounded shadow custom-transition text-center">
-          <img src="assets/listening.png" alt="Listening Sessions" class="w-32 h-32 mx-auto rounded-xl mb-4 object-cover" />
+        <!-- Service 4 -->
+        <div class="bg-white p-6 rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Listening Sessions</h4>
           <p>Personalized sessions where individuals can talk, vent, and feel heard in a safe, non-judgmental environment.</p>
         </div>
 
-        <!-- Career Counselling -->
-        <div class="bg-white p-6 rounded shadow custom-transition text-center">
-          <img src="assets/counselling.png" alt="Career Counselling" class="w-32 h-32 mx-auto rounded-xl mb-4 object-cover" />
+        <!-- Service 5 -->
+        <div class="bg-white p-6 rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Career Counselling</h4>
           <p>Guided paths for students and professionals with personalized advice on learning, career growth, and transition.</p>
         </div>
-
-        <!-- Training & Mentoring -->
-        <div class="bg-white p-6 rounded shadow custom-transition text-center">
-          <img src="assets/mentoring.png" alt="Training and Mentoring" class="w-32 h-32 mx-auto rounded-xl mb-4 object-cover" />
+        
+        <!-- Service 6 -->
+        <div class="bg-white p-6 rounded shadow">
           <h4 class="text-xl font-semibold mb-2">Training & Mentoring</h4>
           <p>Affordable AI, MERN stack, and Data Science mentoring to empower students and jobseekers.</p>
         </div>
@@ -137,7 +93,6 @@ To support our mission of empowering careers and wellness, <strong>EarEase-Nexus
       </div>
     </div>
   </section>
-
 
   <!-- Booking Section -->
 <section id="booking" class="py-16 bg-white">
